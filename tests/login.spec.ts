@@ -36,7 +36,7 @@ viewports.forEach(viewport => {
     // Login using custom command
     await login(page, username, password);
 
-    // Make assertions or perform actions after login
+    // Make assertions after login
     await expect(page.locator('[data-test="title"]')).toBeVisible();
     await page.getByRole('button', { name: 'Open Menu' }).click();
     await page.locator('[data-test="logout-sidebar-link"]').click();
@@ -54,7 +54,7 @@ viewports.forEach(viewport => {
     // Attempt login with invalid credentials
     await login(page, invalidUsername, invalidPassword);
 
-    // Verify that an error message is displayed or the user remains on the login page
+    // Verify that an error message is displayed
     // Find the error
     const element = await page.locator('[data-test="error"]');
 
