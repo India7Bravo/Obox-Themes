@@ -42,7 +42,7 @@ viewports.forEach(viewport => {
       await login(page, username, password);
 
       // Capture a screenshot of the list items
-      const listItemsSelector = '.inventory_list'; // Adjust the selector based on your list items
+      const listItemsSelector = '[data-test="inventory-list"]'; // Adjust the selector based on your list items
       const currentScreenshotPath = `${currentDir}/list-items-${viewport.width}x${viewport.height}.png`;
       const baselineScreenshotPath = `${baselineDir}/list-items-${viewport.width}x${viewport.height}.png`;
 
