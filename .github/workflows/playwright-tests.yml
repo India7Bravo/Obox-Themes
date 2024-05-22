@@ -15,10 +15,7 @@ jobs:
             "products.spec.ts",
             "screenshot_comparison.spec.ts",
           ]
-        viewport:
-          - { width: 320, height: 568 } # Mobile viewport
-          - { width: 768, height: 1024 } # Tablet viewport
-          - { width: 1440, height: 900 } # Desktop viewport
+        project: ["Mobile", "Tablet", "Desktop"]
 
     env:
       USERNAME_SUCCESS: ${{ secrets.USERNAME_SUCCESS }}
@@ -43,7 +40,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npx playwright test tests/${{ matrix.test-file }} --project="${{ matrix.viewport.width }}x${{ matrix.viewport.height }}"
+        run: npx playwright test tests/${{ matrix.test-file }} --project=${{ matrix.project }}
 
       - name: Upload Playwright report
         if: always()
